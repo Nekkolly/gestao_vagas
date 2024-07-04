@@ -23,7 +23,7 @@ import br.com.nekkolly.gestao_vagas.modules.candidate.dto.AuthCandidateResponseD
 public class AuthCandidateUseCase {
   
   @Value("${security.token.secret.candidate}")
-  private String secretKey;
+  private String secret;
   
   @Autowired
   private CandidateRepository candidateRepository;
@@ -44,7 +44,7 @@ public class AuthCandidateUseCase {
       throw new AuthenticationException();
     }
 
-    Algorithm algorithm = Algorithm.HMAC256(secretKey);
+    Algorithm algorithm = Algorithm.HMAC256(secret);
     var expiresIn = Instant.now().plus(Duration.ofMinutes(10));
     var token = JWT.create()
       .withIssuer("javagas")

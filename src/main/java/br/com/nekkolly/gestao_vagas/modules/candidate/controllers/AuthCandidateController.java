@@ -25,8 +25,7 @@ public class AuthCandidateController {
   @PostMapping("/auth")
   public ResponseEntity<Object> auth(@RequestBody AuthCandidateRequestDTO authCandidateRequestDTO) throws AuthenticationException {
       
-      try {
-        
+      try {        
         var token = this.authCandidateUseCase.execute(authCandidateRequestDTO);
         return ResponseEntity.ok().body(token);
       } catch(Exception e) {

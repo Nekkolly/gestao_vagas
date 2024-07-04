@@ -14,13 +14,13 @@ import br.com.nekkolly.gestao_vagas.modules.company.dto.AuthCompanyDTO;
 import br.com.nekkolly.gestao_vagas.modules.company.usecases.AuthCompanyUseCase;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/company")
 public class AuthCompanyController {
   
   @Autowired
   private AuthCompanyUseCase authCompanyUseCase;
 
-  @PostMapping("/company")
+  @PostMapping("/auth")
   public ResponseEntity<Object> create(@RequestBody AuthCompanyDTO authCompanyDTO) throws AuthenticationException {
     try {
       var result = this.authCompanyUseCase.execute(authCompanyDTO);
